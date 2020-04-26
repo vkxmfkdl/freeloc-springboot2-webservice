@@ -1,35 +1,32 @@
 package com.jojoldu.book.springboot.web;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jojoldu.book.springboot.domain.posts.Posts;
 import com.jojoldu.book.springboot.domain.posts.PostsRepository;
+import com.jojoldu.book.springboot.web.Dto.PostsResponseDto;
 import com.jojoldu.book.springboot.web.Dto.PostsSaveRequestDto;
+import com.jojoldu.book.springboot.web.Dto.PostsUpdateRequestDto;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class)
+@Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostApiControllerTest {
+
     @LocalServerPort
     private int port;
 
@@ -45,7 +42,7 @@ public class PostApiControllerTest {
     }
 
     @Test
-    public void Posts_등록된다() throws  Exception{
+    public void Posts_등록된다() throws Exception{
         String title = "title";
         String content = "content";
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
@@ -64,7 +61,56 @@ public class PostApiControllerTest {
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(title);
         assertThat(all.get(0).getContent()).isEqualTo(content);
-
-
     }
+
+    @Test
+    public void Posts_수정된다() throws Exception{
+        Posts savePosts = postsRepository.save(Posts.builder()
+                            .title("title")
+                            .content("content")
+                            .author("author")
+                            .build());
+
+        Long updateId = savePosts.getId();
+        String expectedTtile = "title2";
+        String expectedContent = "content2";
+
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+                                                        .title(expectedTtile)
+                                                        .content(expectedContent)
+                                                        .build();
+
+        String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
+        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT,requestEntity,Long.class);
+
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        List<Posts> all = postsRepository.findAll();
+        assertThat(all.get(0).getTitle()).isEqualTo(expectedTtile);
+        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+    }
+
+    @Test
+    public void Posts_조회된다() throws Exception{
+        String title = "title";
+        String author = "author";
+        String content = "content";
+
+        Posts savePosts = postsRepository.save(Posts.builder()
+                .author(author)
+                .title(title)
+                .content(content)
+                .build());
+        long searchId = savePosts.getId();
+
+        String url = "/api/v1/posts/"+searchId;
+        PostsResponseDto postsResponseDto = restTemplate.getForObject(url, PostsResponseDto.class);
+        assertThat(postsResponseDto.getTitle()).isEqualTo(title);
+        assertThat(postsResponseDto.getAuthor()).isEqualTo(author);
+        assertThat(postsResponseDto.getContent()).isEqualTo(content);
+    }
+
 }
