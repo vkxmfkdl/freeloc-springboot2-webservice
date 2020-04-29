@@ -1,5 +1,6 @@
 package com.jojoldu.book.springboot.domain.posts;
 
+import com.jojoldu.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import javax.persistence.Id;
 @Getter //절대 Setter 메소드를 만들지 않는다.
 @NoArgsConstructor //기본생성자 자동추가
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
