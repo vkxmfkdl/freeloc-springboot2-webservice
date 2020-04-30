@@ -2,3 +2,5 @@
 .gradle
 # 프로젝트 실행 시 자동으로 생성되는 파일이므로 커밋안함.
 .idea
+# 구글프로젝트 id,보안비밀
+application-oauth.properties
