@@ -39,4 +39,5 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-oauth2-client') //소셜 로그인 등 클라이언트입장에서 소셜기능 구현시 필요한 의존성
     compile('org.springframework.session:spring-session-jdbc')
     compile('org.springframework.security:spring-security-test')
+    compile('org.mariadb.jdbc:mariadb-java-client')
 }
