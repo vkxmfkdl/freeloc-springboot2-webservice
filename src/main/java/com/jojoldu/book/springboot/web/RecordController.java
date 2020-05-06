@@ -19,24 +19,41 @@ public class RecordController {
     @GetMapping("/record")
     public String record(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
-
         if(user != null) {
             model.addAttribute("userName", user.getName());
         }
-
         return "record";
+    }
+    @GetMapping("/posts/detailView/{id}")
+    public String detailView(@PathVariable Long id, Model model, @LoginUser SessionUser user){
+        PostsResponseDto dto = postsService.findById(id);
+        model.addAttribute("post", dto);
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+        return "posts-detailView";
     }
 
     @GetMapping("/posts/save")
-    public String postsSave() {
+    public String postsSave(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "posts-save";
     }
 
     @GetMapping("/posts/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model) {
+    public String postsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
-
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            if(!dto.getAuthor().equals(user.getName()))
+                return "miss-page";
+        }
+        else{
+            return "miss-page";
+        }
         return "posts-update";
     }
 }

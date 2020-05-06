@@ -12,6 +12,10 @@ var main = {
         $('#btn-delete').on('click', function () {
             _this.delete();
         });
+
+        $('#btn-isAccessPossible').on('click',function(){
+            _this.isAccessPossible();
+        })
     },
     save : function () {
         var data = {
@@ -56,7 +60,6 @@ var main = {
     },
     delete : function(){
         var id = $('#id').val()
-
         $.ajax({
             type: 'DELETE',
             url:'/api/v1/posts/'+id
@@ -65,6 +68,27 @@ var main = {
             window.location.href ='/record';
         }).fail(function(error){
             alert(JSON.stringify(error));
+        })
+    },
+    isAccessPossible : function(){
+        var data = {
+            author: $('#author').text()
+        };
+        var id = $('#id').text()
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data),
+            url:'/api/v1/isAccessPossible'
+        }).done(function(result){
+            console.log(result);
+            if (result['flag']===true){
+                window.location.href="/posts/update/"+id;
+            }else{
+                alert("접근권한이 없습니다.");
+                window.location.href ="/posts/detailView/"+id;
+            }
         })
     }
 };

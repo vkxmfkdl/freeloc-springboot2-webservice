@@ -1,11 +1,16 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.config.auth.LoginUser;
+import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoldu.book.springboot.service.PostsService;
 import com.jojoldu.book.springboot.web.Dto.PostsResponseDto;
 import com.jojoldu.book.springboot.web.Dto.PostsSaveRequestDto;
 import com.jojoldu.book.springboot.web.Dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @RequiredArgsConstructor
 @RestController //JSON으로 반환하는 컨트롤러를 만들어 줍니다.
@@ -31,5 +36,16 @@ public class PostsApiController {
     public Long delete(@PathVariable Long id){
         postsService.delete(id);
         return id;
+    }
+
+    @PostMapping("/api/v1/isAccessPossible")
+    public HashMap<String,Boolean> getUserSession(@RequestBody HashMap<String,Object> param, @LoginUser SessionUser user) {
+        String author = (String)param.get("author");
+        String curUser = "";
+        if(user != null) { curUser= user.getName(); }
+        ArrayList<String> isAccessInfo = new ArrayList();
+        isAccessInfo.add(author);
+        isAccessInfo.add(curUser);
+        return postsService.isAccessPossible(isAccessInfo);
     }
 }

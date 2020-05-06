@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,4 +58,12 @@ public class PostsService {
 
         postsRepository.deleteById(id);
     }
+
+    public HashMap<String,Boolean> isAccessPossible(ArrayList<String> info){
+        HashMap<String,Boolean> accessFlag = new HashMap<>();
+        if (info.get(0).equals(info.get(1))) accessFlag.put("flag",true);
+        else accessFlag.put("flag",false);
+        return accessFlag;
+    }
+
 }
