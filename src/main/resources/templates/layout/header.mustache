@@ -4,5 +4,26 @@
     <title>스프링부트 웹서비스</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<header>
+    <div class="wrapper">
+        <h1>기억 저장소</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="/record">Record</a></li>
+                {{#userName}}
+                    <li><a style="font-weight:bold;">{{userName}}님 환영합니다.</a></li>
+                    <li><a href="/logout" role="button">Logout</a></li>
+                {{/userName}}
+                {{^userName}}
+                    <li><a href="/oauth2/authorization/google"> Google Login</a></li>
+                    <li><a href="/oauth2/authorization/naver"> Naver Login</a></li>
+                {{/userName}}
+            </ul>
+        </nav>
+    </div>
+</header>
