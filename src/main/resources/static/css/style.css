@@ -1,3 +1,6 @@
+/*webfont*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
 /*reset*/
 *{margin:0; padding: 0;}
 li{list-style: none;}
@@ -10,7 +13,7 @@ a{text-decoration: none;}
 /*header*/
 header {height: 75px; background-color: #006F84; border: 1px solid #253342;
         width: 100%; z-index: 9999; top:0; left:0;}
-h1{color: white; line-height:75px; float:left;}
+h1{color: white; line-height:75px; float:left; font-family: 'Nanum Pen Script', cursive;}
 .menu{float:right;}
-.menu li{float:left;}
+.menu li{float:left; font-family: 'Nanum Pen Script', cursive; font-size:25px;}
 .menu a{line-height: 75px; color:white; padding:0 15px; display: block;}
