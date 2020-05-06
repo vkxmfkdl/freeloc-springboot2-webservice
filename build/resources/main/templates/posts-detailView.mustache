@@ -1,0 +1,36 @@
+{{>layout/header}}
+<br>
+<div class="container">
+    <h2>게시글 상세</h2>
+    <table class="board_view">
+        <tbody>
+            <tr>
+                <th scope="row">글 번호</th>
+                <td id="id">{{post.id}}</td>
+                <th scope="row">조회수</th>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">작성자</th>
+                <td id="author">{{post.author}}</td>
+                <th scope="row">작성시간</th>
+                <td>{{post.modifiedDate}}</td> </tr>
+            <tr>
+                <th scope="row">제목</th>
+                <td colspan="3">{{post.title}}</td>
+            </tr>
+            <tr>
+                <td colspan="6">{{post.content}}</td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td colspan="6">
+                    <a href="/record" role="button" class="btn btn-secondary">취소</a>
+                    <a role="button" id="btn-isAccessPossible"class="btn btn-primary">수정</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+{{>layout/footer}}
