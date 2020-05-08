@@ -1,20 +1,35 @@
-<div id="disqus_thread"></div>
-<script>
+<div class="col-md-8">
+    <form>
+        <div class="form-group">
+            {{#userName}}
+                <b id="reply-author">{{userName}}</b>
+            {{/userName}}
+            {{^userName}}
+                <b id="reply-author">Anonymous</b>
+            {{/userName}}
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" id="reply-content" style="width:100%; height:70px;" placeholder="댓글을 입력하세요"></textarea>
+        </div>
+    </form>
+    <button type="button" class="btn btn-success" id="btn-reply-save" style="float:right;">작성</button>
+</div>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://minstrory.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<h4 class="mt-3">Comments</h4>
+<div class="mt-3 border-bottom">
+    {{#reply}}
+        <div class="border-top pt-1 pb-1">
+            <div class="row">
+                <div class="col-3 col-md-2">
+                    <b>{{author}}</b><br>
+                    <small class="d-block">{{modifiedDate}}</small>
+                </div>
+                <div class="col-9 col-md-10 col-lg-11">
+                    <div class="comment-show">
+                        <div class="comment-text mb-3">{{content}}</div> <!-- 1-4 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/reply}}
+</div>

@@ -3,18 +3,24 @@ package com.jojoldu.book.springboot.web;
 import com.jojoldu.book.springboot.config.auth.LoginUser;
 import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoldu.book.springboot.service.PostsService;
+import com.jojoldu.book.springboot.service.ReplysService;
 import com.jojoldu.book.springboot.web.Dto.PostsResponseDto;
+import com.jojoldu.book.springboot.web.Dto.ReplysListResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RequiredArgsConstructor
 @Controller
 public class RecordController {
 
     private final PostsService postsService;
+    private final ReplysService replysService;
 
     @GetMapping("/record")
     public String record(Model model, @LoginUser SessionUser user) {
@@ -24,10 +30,14 @@ public class RecordController {
         }
         return "record";
     }
+
     @GetMapping("/posts/detailView/{id}")
     public String detailView(@PathVariable Long id, Model model, @LoginUser SessionUser user){
+        List<ReplysListResponseDto> replysListResponseDto = replysService.findAll(id);
+        model.addAttribute("reply",replysListResponseDto);
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
+
         if(user != null) {
             model.addAttribute("userName", user.getName());
         }
