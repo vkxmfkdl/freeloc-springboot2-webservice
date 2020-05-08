@@ -26,7 +26,7 @@ h1{color: white; line-height:75px; float:left; font-family: 'Nanum Pen Script', 
 .board_view tbody th, .board_view tbody td {padding:15px 0 16px 16px;border-bottom:1px solid #ccc}
 .board_view tbody td.view_text {border-top:1px solid #ccc; border-bottom:1px solid #ccc;padding:45px 18px 45px 18px}
 .board_view tbody th.th_file {padding:0 0 0 15px; vertical-align:middle}
-
+.board-pre{word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;}
 /*reply*/
 .post-body,
 .comment-text {

@@ -25,7 +25,6 @@ var main = {
             author: $('#author').val(),
             content: $('#content').val()
         };
-
         $.ajax({
             type: 'POST',
             url: '/api/v1/posts',

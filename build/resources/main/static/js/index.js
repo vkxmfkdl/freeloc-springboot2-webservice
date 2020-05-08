@@ -25,7 +25,6 @@ var main = {
             author: $('#author').val(),
             content: $('#content').val()
         };
-
         $.ajax({
             type: 'POST',
             url: '/api/v1/posts',
@@ -100,7 +99,6 @@ var main = {
             content: $('#reply-content').val()
         };
         console.log(data);
-        alert("a");
         var id = $('#id').text();
         $.ajax({
             type: 'POST',
@@ -109,7 +107,6 @@ var main = {
             data: JSON.stringify(data),
             url:'/api/v1/replys'
         }).done(function(result){
-            alert("댓글 등록 완료.");
             window.location.href ="/posts/detailView/"+id;
         }).fail(function(error){
             alert(JSON.stringify(error));
