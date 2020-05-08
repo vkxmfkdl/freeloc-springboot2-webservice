@@ -12,10 +12,12 @@ var main = {
         $('#btn-delete').on('click', function () {
             _this.delete();
         });
-
         $('#btn-isAccessPossible').on('click',function(){
             _this.isAccessPossible();
-        })
+        });
+        $('#btn-reply-save').on('click',function(){
+            _this.replySave();
+        });
     },
     save : function () {
         var data = {
@@ -59,7 +61,7 @@ var main = {
         });
     },
     delete : function(){
-        var id = $('#id').val()
+        var id = $('#id').val();
         $.ajax({
             type: 'DELETE',
             url:'/api/v1/posts/'+id
@@ -74,7 +76,7 @@ var main = {
         var data = {
             author: $('#author').text()
         };
-        var id = $('#id').text()
+        var id = $('#id').text();
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -90,7 +92,30 @@ var main = {
                 window.location.href ="/posts/detailView/"+id;
             }
         })
+    },
+    replySave : function(){
+        var data ={
+            pageNum: $('#id').text(),
+            author: $('#reply-author').text(),
+            content: $('#reply-content').val()
+        };
+        console.log(data);
+        alert("a");
+        var id = $('#id').text();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data),
+            url:'/api/v1/replys'
+        }).done(function(result){
+            alert("댓글 등록 완료.");
+            window.location.href ="/posts/detailView/"+id;
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        })
     }
+
 };
 
 main.init();
