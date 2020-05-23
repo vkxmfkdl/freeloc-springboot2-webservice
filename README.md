@@ -1,8 +1,8 @@
 # 프로젝트 소개
 
-1.개요: '스프링부트와 AWS로 구현하는 웹 서비스' 책을 기반으로 진행하는 프로젝트이다.
+1.개요: 글을 기록할 수 있는 공간을 만들기 위해 개인 홈페이지 제작 (게시판 CRUD, 댓글 기능, 로그인, 세션 기능 포함)
 
-2.기술스택: SpringBoot
+2.기술스택: SpringBoot, Spring Data JPA, AWS EC2, AWS S3, AWS RDS, Travis CI, Nginx, Spring Security, javsrcipt
 
 3.기간: 2020.04~ 2020.05
 
