@@ -1,12 +1,18 @@
 # 프로젝트 소개
 
-1.개요: 글을 기록할 수 있는 공간을 만들기 위해 개인 홈페이지 제작 (게시판 CRUD, 댓글 기능, 로그인, 세션 기능 포함)
+#### 1.개요: 글을 기록할 수 있는 공간을 만들기 위해 개인 홈페이지 제작
 
-2.기술스택: SpringBoot, Spring Data JPA, AWS EC2, AWS S3, AWS RDS, Travis CI, Nginx, Spring Security, javsrcipt
+#### 2.기술스택: SpringBoot, Spring Data JPA, AWS EC2, AWS S3, AWS RDS, Travis CI, Nginx, Spring Security, javsrcipt
 
-3.기간: 2020.04~ 2020.05
+#### 3.기간: 2020.04~ 2020.05
 
-4.접속 링크 : http://ec2-13-124-79-159.ap-northeast-2.compute.amazonaws.com/record
+#### 4.접속 링크 : http://ec2-13-124-79-159.ap-northeast-2.compute.amazonaws.com/record
+
+#### 5.기능 소개 : 
+ ##### (1) 게시판 CRUD
+ ##### (2) 댓글 기능
+ ##### (3) SNS로그인
+ ##### (4) 세션
 
 # 주요 성과
  
