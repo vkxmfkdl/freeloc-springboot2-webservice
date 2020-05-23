@@ -8,7 +8,7 @@
 
 4.접속 링크 : http://ec2-13-124-79-159.ap-northeast-2.compute.amazonaws.com/record
 
-5.기능 소개 : (1) 게시판 CRUD (2) 댓글 기능 (3) SNS로그인 (4) 세션
+5.기능 소개 : (1) 게시판 CRUD, (2) 댓글 기능, (3) SNS로그인, (4) 세션
 
 # 주요 성과
  
