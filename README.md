@@ -21,6 +21,6 @@
 
  <img src="https://user-images.githubusercontent.com/37204852/82720114-74db5400-9ceb-11ea-88fd-2a685fb5328b.png"/>
  
-#### 3. SNS 로그인 연동 및 SpringSecurity를 사용한 권한설정
+#### 3. SNS 로그인 연동 및 SpringSecurity를 사용 권한설정
 
  <img src="https://user-images.githubusercontent.com/37204852/82720146-a5bb8900-9ceb-11ea-9840-c303f36511c9.png"/>
