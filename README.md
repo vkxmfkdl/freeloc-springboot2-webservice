@@ -8,7 +8,11 @@
 
 4.접속 링크 : http://ec2-13-124-79-159.ap-northeast-2.compute.amazonaws.com/
 
-5.기능 소개 : (1) 게시판 CRUD, (2) 댓글 기능, (3) SNS로그인, (4) 세션
+5.기능 소개 : 
+ (1) 게시판 CRUD
+ (2) 댓글 기능
+ (3) SNS로그인
+ (4) 세션
 
 # 주요 성과
  
@@ -17,9 +21,11 @@
  <img src="https://user-images.githubusercontent.com/37204852/82720094-465d7900-9ceb-11ea-996a-0e7644743637.png"/>
  <img src="https://user-images.githubusercontent.com/37204852/82720107-655c0b00-9ceb-11ea-811f-95b719d1e8fb.png"/>
  
+ 
 #### 2. TEST METHOD 작성을 통한 검증
 
  <img src="https://user-images.githubusercontent.com/37204852/82720114-74db5400-9ceb-11ea-88fd-2a685fb5328b.png"/>
+ 
  
 #### 3. SNS 로그인 연동 및 SpringSecurity를 사용 권한설정
 
