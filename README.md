@@ -2,7 +2,7 @@
 
 1.개요: 글을 기록할 수 있는 공간을 만들기 위해 개인 홈페이지 제작
 
-2.기술스택: SpringBoot, Spring Data JPA, AWS EC2, AWS S3, AWS RDS, Travis CI, Nginx, Spring Security, javsrcipt
+2.기술스택: SpringBoot, Spring Data JPA, AWS EC2, AWS S3, AWS RDS, Travis CI, Nginx, Spring Security, JavaScript
 
 3.기간: 2020.04~ 2020.05
 
